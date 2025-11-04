@@ -11,39 +11,20 @@ Pointbreak is a **bridge** between AI assistants and IDE debuggers. It doesn't i
 
 ## System Architecture
 
-```
-┌─────────────────┐
-│  AI Assistant   │  (Claude Code, Cursor, etc.)
-│  (MCP Client)   │
-└────────┬────────┘
-         │ MCP Protocol
-         │ (JSON-RPC over stdio/WebSocket)
-         │
-┌────────▼────────┐
-│   Pointbreak    │
-│   MCP Server    │  (Rust binary)
-└────────┬────────┘
-         │ WebSocket/Local IPC
-         │
-┌────────▼────────┐
-│   Pointbreak    │
-│   VS Code Ext   │  (TypeScript)
-└────────┬────────┘
-         │ VS Code Debug API
-         │
-┌────────▼────────┐
-│   VS Code       │
-│   Debugger      │
-└────────┬────────┘
-         │ Debug Adapter Protocol (DAP)
-         │
-┌────────▼────────┐
-│  Debug Adapter  │  (CodeLLDB, debugpy, etc.)
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│  Your Program   │  (Being debugged)
-└─────────────────┘
+```mermaid
+graph TD
+    A["AI Assistant<br/>(MCP Client)<br/><br/>Claude Code, Cursor, etc."]
+    B["Pointbreak<br/>MCP Server<br/><br/>Rust binary"]
+    C["Pointbreak<br/>VS Code Extension<br/><br/>TypeScript"]
+    D["VS Code<br/>Debugger"]
+    E["Debug Adapter<br/><br/>CodeLLDB, debugpy, etc."]
+    F["Your Program<br/><br/>Being debugged"]
+
+    A -->|"MCP Protocol<br/>(JSON-RPC over stdio/WebSocket)"| B
+    B -->|"WebSocket/Local IPC"| C
+    C -->|"VS Code Debug API"| D
+    D -->|"Debug Adapter Protocol (DAP)"| E
+    E -->|"Controls execution"| F
 ```
 
 ## Components
