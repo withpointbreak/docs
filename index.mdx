@@ -1,97 +1,92 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: Introduction
+description: 'Glass-box debugging for AI-assisted development'
 ---
 
-## Setting up
+# 🌊 Pointbreak
 
-Get your documentation site up and running in minutes.
+AI assistants can write code. Now they can debug it too.
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+Pointbreak gives AI assistants real debugger access, letting them set breakpoints, step through code, and inspect variables in your IDE, all through natural language.
 
-## Make it yours
+## What Your AI Can Do
 
-Design a docs site that looks great and empowers your users.
+Instead of guessing what's wrong or adding print statements everywhere, your AI assistant can:
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+- 🎯 **Set breakpoints** through natural language ("break on line 42")
+- 🔍 **Inspect variables** while your code runs ("show me user_input")
+- 🪜 **Step through execution** ("step into this function")
+- 🐛 **Find bugs** by actually running and examining your code
+
+## Supported Platforms
+
+<CardGroup cols={3}>
+  <Card title="Languages" icon="code">
+    Python, JavaScript, TypeScript, Rust, Go, C, C++, and any language with Debug Adapter Protocol support
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="AI Assistants" icon="robot">
+    GitHub Copilot, Cursor, Claude Code, Codex, and any MCP-compatible tool
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="IDEs" icon="window">
+    VS Code, Cursor, Windsurf, VS Codium, and VS Code-compatible editors
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## How It Works
 
-Everything you need to create world-class documentation.
+```
+┌─────────────┐      MCP          ┌──────────────┐      IDE Extension      ┌─────────────┐
+│     AI      │  ─── Protocol ──► │  Pointbreak  │  ─────────────────────► │     IDE     │
+│  Assistant  │                   │ MCP Server   │                         │  Debugger   │
+└─────────────┘                   └──────────────┘                         └─────────────┘
+```
 
-<Columns cols={2}>
+Instead of building a new debugger, Pointbreak uses your IDE's existing debugger. You get all your installed debug adapters, breakpoint UI, and variable inspection—but now controllable through AI.
+
+## Quick Example
+
+```
+User: "Debug this test and tell me why user_input is empty"
+
+AI: Setting breakpoint at line 15... Starting debugger...
+    [Breakpoint appears in VS Code]
+    [Debug session starts]
+    [Code pauses at breakpoint]
+
+    Found it! You're reading user_input before prompting the user.
+    The input happens on line 18, but you're using it on line 15.
+    Move the prompt above the read.
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
   <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
+    title="Installation"
+    icon="download"
+    href="/installation"
   >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
+    Install Pointbreak for your IDE
   </Card>
   <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
+    title="Getting Started"
+    icon="rocket"
+    href="/quickstart"
   >
-    Display images and other media.
+    Your first debugging session
   </Card>
   <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
+    title="AI Assistants"
+    icon="wand-magic-sparkles"
+    href="/ai-assistants"
   >
-    Write once and reuse across your docs.
+    Configure your AI assistant
   </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+  <Card
+    title="GitHub"
+    icon="github"
+    href="https://github.com/withpointbreak/pointbreak"
+  >
+    View on GitHub
+  </Card>
+</CardGroup>
