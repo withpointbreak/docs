@@ -1,43 +1,55 @@
-# Mintlify Starter Kit
+# Pointbreak Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository contains the source for [docs.withpointbreak.com](https://docs.withpointbreak.com) — the official documentation for Pointbreak.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## About Pointbreak
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Pointbreak gives AI assistants real debugger access, letting them set breakpoints, step through code, and inspect variables in your IDE through natural language.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+**Main repository:** [github.com/withpointbreak/pointbreak](https://github.com/withpointbreak/pointbreak)
 
-## Development
+## Documentation Site
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+The live documentation is available at **[docs.withpointbreak.com](https://docs.withpointbreak.com)**.
 
-```
-npm i -g mint
-```
+This site is built using [Mintlify](https://mintlify.com), a modern documentation platform.
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+## Local Development
 
-```
-mint dev
-```
+To preview documentation changes locally:
 
-View your local preview at `http://localhost:3000`.
+1. **Install the Mintlify CLI:**
+   ```bash
+   npm i -g mint
+   ```
 
-## Publishing changes
+2. **Run the dev server:**
+   ```bash
+   mint dev
+   ```
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+3. **View at:** [localhost:3000](http://localhost:3000)
 
-## Need help?
+## Repository Structure
 
-### Troubleshooting
+- `*.mdx` - Documentation pages (MDX format - Markdown with JSX)
+- `docs.json` - Site configuration (navigation, theme, etc.)
+- `reference/` - API and reference documentation
+- `logo/` - Site logos and branding assets
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Publishing Changes
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Changes pushed to the `main` branch are automatically deployed to production via Mintlify's GitHub integration.
+
+## Contributing
+
+Found an issue or want to suggest improvements to the documentation?
+
+- **Issues:** [github.com/withpointbreak/pointbreak/issues](https://github.com/withpointbreak/pointbreak/issues)
+- **Discussions:** [github.com/withpointbreak/pointbreak/discussions](https://github.com/withpointbreak/pointbreak/discussions)
+
+## License
+
+Documentation content in this repository is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+Built by [Kevin Swiber](https://github.com/kevinswiber)
