@@ -20,8 +20,8 @@ graph TD
     E["Debug Adapter<br/><br/>CodeLLDB, debugpy, etc."]
     F["Your Program<br/><br/>Being debugged"]
 
-    A -->|"MCP Protocol<br/>(JSON-RPC over stdio/WebSocket)"| B
-    B -->|"WebSocket/Local IPC"| C
+    A -->|"MCP Protocol<br/>(stdio)"| B
+    B -->|"WebSocket"| C
     C -->|"VS Code Debug API"| D
     D -->|"Debug Adapter Protocol (DAP)"| E
     E -->|"Controls execution"| F
