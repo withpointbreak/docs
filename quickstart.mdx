@@ -61,7 +61,25 @@ Built into VS Code - no installation needed!
 
 Pointbreak is automatically registered as an MCP server in VS Code's GitHub Copilot and Cursor.
 
-### Option C: Other MCP Clients
+### Option B: Claude Code (External AI Assistant)
+
+1. Install Pointbreak extension in VS Code
+2. Install Pointbreak CLI:
+   ```bash
+   # macOS / Linux
+   curl -fsSL https://raw.githubusercontent.com/withpointbreak/pointbreak/main/scripts/install.sh | sh
+
+   # Windows (PowerShell)
+   irm https://raw.githubusercontent.com/withpointbreak/pointbreak/main/scripts/install.ps1 | iex
+   ```
+3. Add Pointbreak as an MCP server:
+   ```bash
+   claude mcp add --transport stdio pointbreak -- pointbreak
+   ```
+
+For more details, see [Claude Code Setup](/ai-assistants#claude-code)
+
+### Option C: Other MCP Clients (Codex, Windsurf, etc.)
 
 Configure your MCP client to use Pointbreak. See [AI Assistants Guide](ai-assistants.md) for details.
 

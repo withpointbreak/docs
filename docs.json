@@ -58,7 +58,8 @@
             "group": "CLI & IDE",
             "pages": [
               "reference/cli",
-              "reference/ide-settings"
+              "reference/ide-settings",
+              "reference/mcp-configuration"
             ]
           }
         ]
@@ -110,7 +111,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://twitter.com/kevinswiber",
+      "x": "https://x.com/withpointbreak",
       "github": "https://github.com/withpointbreak/pointbreak"
     }
   }
