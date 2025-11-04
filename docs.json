@@ -3,8 +3,8 @@
   "theme": "mint",
   "name": "Pointbreak",
   "colors": {
-    "primary": "#38bdf8",
-    "light": "#0ea5e9",
+    "primary": "#0369a1",
+    "light": "#38bdf8",
     "dark": "#0284c7"
   },
   "favicon": "/favicon.svg",
