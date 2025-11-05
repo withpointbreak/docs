@@ -5,26 +5,36 @@ description: "Setup guides for using Pointbreak with different AI assistants"
 
 ## Two Installation Paths
 
+<Note>
+Pointbreak supports two types of AI assistants, each requiring different installation steps:
+
 **Built-in AI agents (GitHub Copilot, Cursor):**
-- Just install the extension—MCP server auto-registers
-- No additional configuration needed
+- ✅ Just install the extension—MCP server auto-registers
+- ✅ No additional configuration needed
+- ✅ Works immediately after extension install
 
 **External AI assistants (Claude Code, Codex, Windsurf, etc.):**
-- Install the extension + install MCP server separately
-- Configure your AI assistant to use the MCP server
+- ⚠️ Install the extension **AND** install CLI separately
+- ⚠️ Configure your AI assistant to use the MCP server
+- ⚠️ Both steps required for it to work
+
+Choose the section below that matches your AI assistant.
+</Note>
 
 ---
 
 ## GitHub Copilot (VS Code Built-in)
 
-GitHub Copilot works automatically with Pointbreak—no additional setup needed!
+<Tip>
+**Zero configuration required!** Just install the Pointbreak extension and GitHub Copilot automatically gains debugging superpowers.
+</Tip>
 
 ### Setup
 
 1. Install Pointbreak extension in VS Code
 2. Use GitHub Copilot as normal
 
-The MCP server auto-registers with GitHub Copilot when you install the extension.
+The MCP server auto-registers with GitHub Copilot when you install the extension—no CLI installation or configuration needed.
 
 ### Usage
 
@@ -38,7 +48,9 @@ Ask Copilot to debug your code:
 
 ## Claude Code
 
-Claude Code requires MCP server installation and configuration.
+<Warning>
+**Both extension AND CLI required!** Claude Code won't be able to use Pointbreak unless you complete both Step 1 (install CLI) and Step 2 (configure MCP server).
+</Warning>
 
 ### Setup
 
@@ -99,14 +111,16 @@ Ask Claude to debug your code:
 
 ## Cursor (Built-in Agent)
 
-Cursor's built-in AI agent works automatically with Pointbreak—no additional setup needed!
+<Tip>
+**Zero configuration required!** Just install the Pointbreak extension and Cursor's AI automatically gains debugging capabilities.
+</Tip>
 
 ### Setup
 
 1. Install Pointbreak extension in Cursor
 2. Use Cursor's AI panel (Cmd+K / Ctrl+K)
 
-The MCP server auto-registers with Cursor's built-in agent when you install the extension.
+The MCP server auto-registers with Cursor's built-in agent when you install the extension—no CLI installation or configuration needed.
 
 ### Usage
 

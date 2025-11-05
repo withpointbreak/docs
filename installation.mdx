@@ -3,6 +3,33 @@ title: Installation
 description: 'Complete installation instructions for all platforms and methods'
 ---
 
+## System Requirements
+
+Before installing Pointbreak, ensure your system meets these requirements:
+
+### Required
+
+- **Operating Systems**: macOS 10.15+, Windows 10+, or Linux (recent distributions)
+- **Editor**: VS Code 1.74.0+ (or compatible: Cursor, Windsurf, VS Codium)
+- **Debug Adapter**: Language-specific debugger for your project
+  - Python: debugpy (via Python extension)
+  - JavaScript/TypeScript: Node Debug (built into VS Code)
+  - Rust/C/C++: CodeLLDB
+  - Go: Delve (via Go extension)
+- **Network**: Internet connection for initial download
+
+### Optional
+
+- **AI Assistant**: MCP-compatible client (Claude Code, Codex, etc.) or built-in (GitHub Copilot, Cursor)
+- **Package Manager**: Homebrew (macOS/Linux) or npm for alternative installation methods
+- **Node.js**: 18+ (only required for npm installation)
+
+### Platform-Specific Notes
+
+- **macOS**: Both Intel (x64) and Apple Silicon (ARM64) are supported
+- **Windows**: Use WSL, PowerShell, or native installation. WSL recommended for best experience.
+- **Linux**: Debian/Ubuntu (glibc) and Alpine (musl) distributions supported
+
 <Tip>
 **Important:** Your installation depends on which AI assistant you're using!
 
@@ -83,12 +110,26 @@ If you're using **Claude Code, Codex, Windsurf**, or another external AI assista
 
 **macOS / Linux:**
 ```bash
+# Install latest version (default)
 curl -fsSL https://withpointbreak.com/install.sh | sh
+
+# Install specific version
+curl -fsSL https://withpointbreak.com/install.sh | sh -s -- --version=v0.2.0
+
+# Install to custom directory
+curl -fsSL https://withpointbreak.com/install.sh | sh -s -- --prefix=/opt/pointbreak
 ```
 
 **Windows (PowerShell):**
 ```powershell
+# Install latest version (default)
 irm https://withpointbreak.com/install.ps1 | iex
+
+# Install specific version
+$Version = "v0.2.0"; irm https://withpointbreak.com/install.ps1 | iex
+
+# Install to custom directory
+$InstallDir = "C:\Tools\Pointbreak"; irm https://withpointbreak.com/install.ps1 | iex
 ```
 
 ### What It Does
@@ -99,6 +140,10 @@ The install script:
 3. Verifies the binary with SHA256 checksums
 4. Installs to user directory (no sudo required)
 5. Checks PATH configuration
+
+<Warning>
+**Do NOT use `sudo` with the install script.** The script installs to your user directory (`~/.local/bin`) which doesn't require elevated permissions. Using `sudo` can lead to permission issues and security risks.
+</Warning>
 
 ### Installation Paths
 
@@ -148,13 +193,44 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ## Verifying Installation
 
-After installation:
+After installation, verify that Pointbreak is working correctly:
+
+### Check Extension
 
 1. Open the Output panel: **View → Output**
 2. Select **"Pointbreak"** from the dropdown
 3. You should see: `Pointbreak debug bridge started successfully`
 
-If you see errors, continue to the Troubleshooting section below.
+<Tip>
+Look for the Pointbreak status indicator in the VS Code status bar (bottom of window). A green status means the MCP server is running.
+</Tip>
+
+### Check CLI (External AI Only)
+
+If you installed the CLI for external AI assistants:
+
+```bash
+# Verify CLI is installed
+pointbreak --version
+
+# Check if binary is in PATH (macOS / Linux)
+which pointbreak
+
+# Check if binary is in PATH (Windows)
+where.exe pointbreak
+```
+
+### Test with Your AI Assistant
+
+The best verification is to test with your AI assistant:
+
+1. Open a project with a debuggable file
+2. Ask your AI assistant: "Set a breakpoint on line 10 of main.py"
+3. The breakpoint should appear in VS Code
+
+<Note>
+If verification fails, see the [Troubleshooting](#troubleshooting-installation) section below or check the [Troubleshooting Guide](/troubleshooting) for detailed diagnostics.
+</Note>
 
 ## Updating
 

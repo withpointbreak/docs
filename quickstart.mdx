@@ -54,7 +54,18 @@ Built into VS Code - no installation needed!
 
 ## Step 3: Set Up Your AI Assistant
 
+<Note>
+**Choose the option that matches your AI assistant:**
+- **Option A** for GitHub Copilot or Cursor (simplest - no CLI needed)
+- **Option B** for Claude Code (requires CLI installation)
+- **Option C** for other MCP clients
+</Note>
+
 ### Option A: GitHub Copilot or Cursor (Built-in)
+
+<Tip>
+If you're using GitHub Copilot or Cursor, you're done! No additional setup required—skip to Step 4.
+</Tip>
 
 1. Install Pointbreak extension in VS Code or Cursor
 2. Use the IDE's built-in AI panel
@@ -62,6 +73,10 @@ Built into VS Code - no installation needed!
 Pointbreak is automatically registered as an MCP server in VS Code's GitHub Copilot and Cursor.
 
 ### Option B: Claude Code (External AI Assistant)
+
+<Warning>
+**CLI installation required!** Claude Code won't work with Pointbreak unless you install both the extension AND the CLI.
+</Warning>
 
 1. Install Pointbreak extension in VS Code
 2. Install Pointbreak CLI:
@@ -90,6 +105,10 @@ Check that Pointbreak is working:
 1. Open the Output panel: View → Output
 2. Select "Pointbreak" from the dropdown
 3. You should see: `Pointbreak debug bridge started successfully`
+
+<Tip>
+Look for the Pointbreak status indicator in your VS Code status bar (bottom of window). A green status means everything is working!
+</Tip>
 
 If you see errors, check [Troubleshooting](troubleshooting.md).
 
