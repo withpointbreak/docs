@@ -3,148 +3,306 @@ title: Getting Started
 description: 'Set up Pointbreak and complete your first AI-assisted debugging session in 5 minutes'
 ---
 
-## Prerequisites
+## What You'll Install
 
-Before you begin, you'll need:
+Pointbreak needs **two pieces** to work:
 
-- **VS Code** (or compatible editor: Cursor, Windsurf, VS Codium)
-- **An MCP-compatible AI assistant** (Claude Code, Cursor AI, Codex, etc.)
-- **A debug adapter** for your language (e.g., CodeLLDB for Rust, debugpy for Python)
-
-## Step 1: Install the Pointbreak Extension
-
-### Via VS Code Marketplace (Recommended)
-
-1. Open VS Code
-2. Go to Extensions (Cmd+Shift+X / Ctrl+Shift+X)
-3. Search for "Pointbreak"
-4. Look for publisher: `pointbreak`
-5. Click "Install"
-
-### Via Manual VSIX
-
-1. Download the appropriate VSIX from [GitHub Releases](https://github.com/withpointbreak/pointbreak/releases)
-2. Run: `code --install-extension pointbreak-*.vsix`
-
-## Step 2: Install a Debug Adapter
-
-Pointbreak works with your IDE's native debugger, so you need the appropriate debug adapter for your language.
-
-### Python (debugpy)
-
-1. Open VS Code Extensions
-2. Search for "Python"
-3. Install the official Python extension by Microsoft (includes debugpy)
-
-### JavaScript/TypeScript (Node Debug)
-
-Built into VS Code - no installation needed!
-
-### Rust (CodeLLDB)
-
-1. Open VS Code Extensions
-2. Search for "CodeLLDB"
-3. Install the extension by vadimcn
-
-### Go (Delve)
-
-1. Open VS Code Extensions
-2. Search for "Go"
-3. Install the official Go extension (includes Delve integration)
-
-## Step 3: Set Up Your AI Assistant
-
-<Note>
-**Choose the option that matches your AI assistant:**
-- **Option A** for GitHub Copilot or Cursor (simplest - no CLI needed)
-- **Option B** for Claude Code (requires CLI installation)
-- **Option C** for other MCP clients
-</Note>
-
-### Option A: GitHub Copilot or Cursor (Built-in)
+1. **🔧 IDE Extension** - Connects your IDE to the debugger
+2. **🤖 MCP Server** - Lets your AI control the debugger
 
 <Tip>
-If you're using GitHub Copilot or Cursor, you're done! No additional setup required—skip to Step 4.
+**Good news:** If you use GitHub Copilot or Cursor, the MCP server installs automatically! You only need to install the extension.
 </Tip>
 
-1. Install Pointbreak extension in VS Code or Cursor
-2. Use the IDE's built-in AI panel
+Choose your installation path:
 
-Pointbreak is automatically registered as an MCP server in VS Code's GitHub Copilot and Cursor.
+<CardGroup cols={2}>
+  <Card title="Quick Setup" icon="zap" href="#quick-setup-github-copilot-cursor">
+    **GitHub Copilot or Cursor:**
 
-### Option B: Claude Code (External AI Assistant)
+    1 step - Just install the extension!
+  </Card>
+
+  <Card title="Full Setup" icon="list" href="#full-setup-claude-code-other-ais">
+    **Claude Code, Codex, Windsurf, Goose:**
+
+    2 steps - Extension + CLI
+  </Card>
+</CardGroup>
+
+---
+
+## Quick Setup: GitHub Copilot/Cursor
+
+<Steps>
+  <Step title="Install Extension">
+    1. Open VS Code or Cursor
+    2. Go to Extensions (Cmd+Shift+X / Ctrl+Shift+X)
+    3. Search for "Pointbreak"
+    4. Click "Install"
+
+    **That's it!** The MCP server auto-registers with GitHub Copilot and Cursor.
+  </Step>
+
+  <Step title="Install Debug Adapter">
+    Install the debug adapter for your language:
+
+    <Tabs>
+      <Tab title="Python">
+        Search for "Python" in Extensions and install the official Microsoft Python extension (includes debugpy).
+      </Tab>
+
+      <Tab title="JavaScript/TypeScript">
+        Built into VS Code - no installation needed!
+      </Tab>
+
+      <Tab title="Rust">
+        Search for "CodeLLDB" in Extensions and install it (by vadimcn).
+      </Tab>
+
+      <Tab title="Go">
+        Search for "Go" in Extensions and install the official Go extension (includes Delve).
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Verify Installation">
+    Open the Output panel (View → Output), select "Pointbreak" from dropdown.
+
+    You should see: `Pointbreak debug bridge started successfully`
+
+    <Tip>
+    Check the status bar at the bottom of VS Code - a green Pointbreak indicator means you're ready!
+    </Tip>
+  </Step>
+
+  <Step title="Try It Out">
+    **You're ready to debug!**
+
+    [Skip to Your First Debugging Session](#your-first-debugging-session)
+  </Step>
+</Steps>
+
+---
+
+## Full Setup: Claude Code/Other AIs
 
 <Warning>
-**CLI installation required!** Claude Code won't work with Pointbreak unless you install both the extension AND the CLI.
+**Both pieces required!** These AI assistants need manual MCP configuration, so you must install the extension AND the CLI.
 </Warning>
 
-1. Install Pointbreak extension in VS Code
-2. Install Pointbreak CLI:
-   ```bash
-   # macOS / Linux
-   curl -fsSL https://withpointbreak.com/install.sh | sh
+<Steps>
+  <Step title="Install Extension">
+    1. Open VS Code (or compatible editor)
+    2. Go to Extensions (Cmd+Shift+X / Ctrl+Shift+X)
+    3. Search for "Pointbreak"
+    4. Click "Install"
 
-   # Windows (PowerShell)
-   irm https://withpointbreak.com/install.ps1 | iex
-   ```
-3. Add Pointbreak as an MCP server:
-   ```bash
-   claude mcp add --transport stdio pointbreak -- pointbreak
-   ```
+    **Direct link:** [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=pointbreak.pointbreak)
+  </Step>
 
-For more details, see [Claude Code Setup](/ai-assistants#claude-code)
+  <Step title="Install Debug Adapter">
+    Install the debug adapter for your language:
 
-### Option C: Other MCP Clients (Codex, Windsurf, etc.)
+    <Tabs>
+      <Tab title="Python">
+        Search for "Python" in Extensions and install the official Microsoft Python extension (includes debugpy).
+      </Tab>
 
-Configure your MCP client to use Pointbreak. See [AI Assistants Guide](ai-assistants.md) for details.
+      <Tab title="JavaScript/TypeScript">
+        Built into VS Code - no installation needed!
+      </Tab>
 
-## Step 4: Verify Installation
+      <Tab title="Rust">
+        Search for "CodeLLDB" in Extensions and install it (by vadimcn).
+      </Tab>
 
-Check that Pointbreak is working:
+      <Tab title="Go">
+        Search for "Go" in Extensions and install the official Go extension (includes Delve).
+      </Tab>
+    </Tabs>
+  </Step>
 
-1. Open the Output panel: View → Output
-2. Select "Pointbreak" from the dropdown
-3. You should see: `Pointbreak debug bridge started successfully`
+  <Step title="Install MCP Server (CLI)">
+    **macOS / Linux:**
+    ```bash
+    curl -fsSL https://withpointbreak.com/install.sh | sh
+    ```
 
-<Tip>
-Look for the Pointbreak status indicator in your VS Code status bar (bottom of window). A green status means everything is working!
-</Tip>
+    **Windows (PowerShell):**
+    ```powershell
+    irm https://withpointbreak.com/install.ps1 | iex
+    ```
 
-If you see errors, check [Troubleshooting](troubleshooting.md).
+    **Verify it worked:**
+    ```bash
+    pointbreak --version
+    # Should output: pointbreak X.X.X
+    ```
 
-## Step 5: Your First Debugging Session
+    <Note>
+    The script installs to `~/.local/bin` (Unix) or `%LOCALAPPDATA%\Pointbreak\bin` (Windows). Don't use `sudo`!
+    </Note>
+  </Step>
 
-Let's debug a simple program!
+  <Step title="Configure Your AI Assistant">
+    Register the MCP server with your AI assistant:
 
-### Example Code (Python)
+    <Tabs>
+      <Tab title="Claude Code">
+        ```bash
+        claude mcp add --transport stdio pointbreak -- pointbreak
+        ```
 
-Create `test.py`:
+        Verify with:
+        ```bash
+        claude mcp list
+        # Should show: pointbreak
+        ```
 
-```python
-def calculate_average(numbers):
-    total = sum(numbers)
-    count = len(numbers)
-    return total / count
+        [Detailed Claude Code Setup →](/ai-assistants#claude-code)
+      </Tab>
 
-result = calculate_average([1, 2, 3, 4, 5])
-print(f"Average: {result}")
-```
+      <Tab title="Codex">
+        ```bash
+        codex mcp add pointbreak -- pointbreak
+        ```
+
+        Verify with the `/mcp` command in Codex.
+      </Tab>
+
+      <Tab title="Windsurf">
+        Configure Windsurf's MCP settings to point to the binary:
+        - **macOS/Linux**: `~/.local/bin/pointbreak`
+        - **Windows**: `%LOCALAPPDATA%\Pointbreak\bin\pointbreak.exe`
+
+        [Detailed Windsurf Setup →](/ai-assistants#windsurf)
+      </Tab>
+
+      <Tab title="Goose">
+        Add to your Goose MCP configuration:
+        ```json
+        {
+          "mcpServers": {
+            "pointbreak": {
+              "command": "pointbreak"
+            }
+          }
+        }
+        ```
+      </Tab>
+
+      <Tab title="Other">
+        Configure your MCP client to use:
+        - **macOS/Linux**: `~/.local/bin/pointbreak`
+        - **Windows**: `%LOCALAPPDATA%\Pointbreak\bin\pointbreak.exe`
+
+        [See all AI assistants →](/ai-assistants)
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Verify Everything Works">
+    1. **Check extension** - Output panel should show: `Pointbreak debug bridge started successfully`
+    2. **Check CLI** - Run: `pointbreak --version`
+    3. **Check AI config** - List MCP servers (e.g., `claude mcp list`)
+
+    If something's wrong, see [Troubleshooting](/troubleshooting).
+  </Step>
+</Steps>
+
+---
+
+## Your First Debugging Session
+
+Let's debug a simple program to verify everything works!
+
+### Create Example Code
+
+<Tabs>
+  <Tab title="Python">
+    Create `test.py`:
+    ```python
+    def calculate_average(numbers):
+        total = sum(numbers)
+        count = len(numbers)
+        return total / count
+
+    result = calculate_average([1, 2, 3, 4, 5])
+    print(f"Average: {result}")
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    Create `test.js`:
+    ```javascript
+    function calculateAverage(numbers) {
+      const total = numbers.reduce((sum, n) => sum + n, 0);
+      const count = numbers.length;
+      return total / count;
+    }
+
+    const result = calculateAverage([1, 2, 3, 4, 5]);
+    console.log(`Average: ${result}`);
+    ```
+  </Tab>
+
+  <Tab title="Rust">
+    Create `test.rs`:
+    ```rust
+    fn calculate_average(numbers: &[i32]) -> f64 {
+        let total: i32 = numbers.iter().sum();
+        let count = numbers.len() as f64;
+        total as f64 / count
+    }
+
+    fn main() {
+        let result = calculate_average(&[1, 2, 3, 4, 5]);
+        println!("Average: {}", result);
+    }
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    Create `test.go`:
+    ```go
+    package main
+
+    import "fmt"
+
+    func calculateAverage(numbers []int) float64 {
+        total := 0
+        for _, n := range numbers {
+            total += n
+        }
+        return float64(total) / float64(len(numbers))
+    }
+
+    func main() {
+        result := calculateAverage([]int{1, 2, 3, 4, 5})
+        fmt.Printf("Average: %.2f\n", result)
+    }
+    ```
+  </Tab>
+</Tabs>
 
 ### Ask Your AI Assistant
 
 Try this prompt:
 
 ```
-"Set a breakpoint on line 3 of test.py and start debugging.
+"Set a breakpoint on line 3 and start debugging test.py.
 Show me the value of 'numbers' when we hit the breakpoint."
 ```
 
+(Adjust line number and filename for your language)
+
 ### What Should Happen
 
-1. **Breakpoint appears** - You'll see a red dot on line 3 in VS Code
-2. **Debug session starts** - The debugger launches automatically
+1. **Breakpoint appears** - Red dot on line 3 in VS Code
+2. **Debug session starts** - Debugger launches automatically
 3. **Execution pauses** - Code stops at line 3
-4. **AI inspects variables** - The AI shows you the value of `numbers`
+4. **AI inspects variables** - Shows you the value of `numbers`
 
 ### Example AI Response
 
@@ -157,42 +315,63 @@ The value of 'numbers' is: [1, 2, 3, 4, 5]
 Would you like me to step through the rest of the function?
 ```
 
+---
+
 ## Common First-Time Issues
 
 ### "AI can't find Pointbreak"
 
-**Solution:** Make sure the extension is installed and enabled. Restart VS Code if needed.
+**VS Code/Cursor users:** Restart your editor
+
+**Claude Code users:**
+- Check CLI: `pointbreak --version`
+- Check MCP config: `claude mcp list`
+- See [Claude Code troubleshooting](/ai-assistants#claude-code)
 
 ### "Breakpoint not hit"
 
-**Solution:** Ensure your debug configuration is correct. Try running the debugger manually first (F5) to verify it works.
+- Ensure debug adapter is installed for your language
+- Try running debugger manually (F5) first to verify it works
+- Check that file is saved
 
 ### "No debug adapter available"
 
-**Solution:** Install the debug adapter for your language (see Step 2).
+Install the debug adapter for your language (see Step 2 above).
+
+---
+
+## Tips for Effective AI Debugging
+
+1. **Be specific** - "Set a breakpoint on line 42" > "debug this"
+2. **Set breakpoints first** - Ask AI to set breakpoints before starting debugger
+3. **Ask for context** - "Show me the stack trace" or "What are all the local variables?"
+4. **Step through interactively** - "Step into this function" or "Step over the next line"
+5. **Use natural language** - No need to memorize commands!
+
+### Example Prompts to Try
+
+```
+"Set a breakpoint where the error occurs and start debugging"
+
+"Step through this loop and show me how the counter changes"
+
+"What's the call stack when we hit this breakpoint?"
+
+"Set a conditional breakpoint that only triggers when x > 10"
+
+"Step into this function and inspect all local variables"
+```
+
+---
 
 ## Next Steps
 
 Now that you're up and running:
 
-- Read the [Usage Guide](usage.md) for more debugging workflows
-- Check out [AI Assistants](ai-assistants.md) for setup guides
-- Explore [common debugging patterns](usage.md#common-patterns)
-- Join [GitHub Discussions](https://github.com/withpointbreak/pointbreak/discussions) to share your experience
-
-## Tips for Effective AI Debugging
-
-1. **Be specific** - "Set a breakpoint on line 42" is clearer than "debug this"
-2. **Set breakpoints first** - Ask the AI to set breakpoints before starting the debugger
-3. **Ask for context** - "Show me the stack trace" or "What are all the local variables?"
-4. **Step through interactively** - "Step into this function" or "Step over the next line"
-5. **Use natural language** - You don't need to memorize commands!
-
-## Questions?
-
-- **Troubleshooting:** See [Troubleshooting Guide](troubleshooting.md)
-- **More examples:** See [Usage Guide](usage.md)
-- **Ask the community:** [GitHub Discussions](https://github.com/withpointbreak/pointbreak/discussions)
+- **Learn debugging patterns** - See [Usage Guide](/usage)
+- **Advanced features** - See [AI Assistants Guide](/ai-assistants)
+- **Troubleshooting** - See [Troubleshooting Guide](/troubleshooting)
+- **Join the community** - [GitHub Discussions](https://github.com/withpointbreak/pointbreak/discussions)
 
 ---
 
