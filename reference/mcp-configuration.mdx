@@ -34,7 +34,7 @@ Claude Code uses a CLI-based approach for configuring MCP servers, not configura
 Use the `claude mcp add` command to register Pointbreak:
 
 ```bash
-claude mcp add --transport stdio pointbreak -- pointbreak
+claude mcp add --transport stdio pointbreak -- pointbreak mcp serve
 ```
 
 **What this does:**
@@ -48,10 +48,10 @@ If Pointbreak is not in your PATH, specify the full path:
 
 ```bash
 # macOS / Linux
-claude mcp add --transport stdio pointbreak -- /Users/username/.local/bin/pointbreak
+claude mcp add --transport stdio pointbreak -- /Users/username/.local/bin/pointbreak mcp serve
 
 # Windows
-claude mcp add --transport stdio pointbreak -- C:\Users\username\AppData\Local\Pointbreak\bin\pointbreak.exe
+claude mcp add --transport stdio pointbreak -- C:\Users\username\AppData\Local\Pointbreak\bin\pointbreak.exe mcp serve
 ```
 
 ### Verification
@@ -95,7 +95,7 @@ Codex also uses a CLI-based approach for configuring MCP servers.
 Use the `codex mcp add` command to register Pointbreak:
 
 ```bash
-codex mcp add pointbreak -- pointbreak
+codex mcp add pointbreak -- pointbreak mcp serve
 ```
 
 **What this does:**
@@ -109,10 +109,10 @@ If Pointbreak is not in your PATH, specify the full path:
 
 ```bash
 # macOS / Linux
-codex mcp add pointbreak -- /Users/username/.local/bin/pointbreak
+codex mcp add pointbreak -- /Users/username/.local/bin/pointbreak mcp serve
 
 # Windows
-codex mcp add pointbreak -- C:\Users\username\AppData\Local\Pointbreak\bin\pointbreak.exe
+codex mcp add pointbreak -- C:\Users\username\AppData\Local\Pointbreak\bin\pointbreak.exe mcp serve
 ```
 
 ### Verification
@@ -152,7 +152,8 @@ Add to your Windsurf settings:
 {
   "mcp.servers": {
     "pointbreak": {
-      "command": "/Users/username/.local/bin/pointbreak"
+      "command": "/Users/username/.local/bin/pointbreak",
+      "args": ["mcp", "serve"]
     }
   }
 }
@@ -173,7 +174,7 @@ Most MCP-compatible clients follow this format:
   "mcpServers": {
     "pointbreak": {
       "command": "/path/to/pointbreak-binary",
-      "args": [],
+      "args": ["mcp", "serve"],
       "env": {}
     }
   }

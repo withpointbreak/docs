@@ -189,7 +189,7 @@ Pointbreak has **two components** that work together:
     <Tabs>
       <Tab title="Claude Code">
         ```bash
-        claude mcp add --transport stdio pointbreak -- pointbreak
+        claude mcp add --transport stdio pointbreak -- pointbreak mcp serve
         ```
 
         Verify with:
@@ -203,7 +203,7 @@ Pointbreak has **two components** that work together:
 
       <Tab title="Codex">
         ```bash
-        codex mcp add pointbreak -- pointbreak
+        codex mcp add pointbreak -- pointbreak mcp serve
         ```
 
         Verify with the `/mcp` command in Codex.
@@ -223,7 +223,8 @@ Pointbreak has **two components** that work together:
         {
           "mcpServers": {
             "pointbreak": {
-              "command": "pointbreak"
+              "command": "pointbreak",
+              "args": ["mcp", "serve"]
             }
           }
         }
