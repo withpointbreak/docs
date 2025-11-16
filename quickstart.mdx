@@ -151,7 +151,7 @@ Choose your installation path:
     <Tabs>
       <Tab title="Claude Code">
         ```bash
-        claude mcp add --transport stdio pointbreak -- pointbreak
+        claude mcp add --transport stdio pointbreak -- pointbreak mcp serve
         ```
 
         Verify with:
@@ -165,7 +165,7 @@ Choose your installation path:
 
       <Tab title="Codex">
         ```bash
-        codex mcp add pointbreak -- pointbreak
+        codex mcp add pointbreak -- pointbreak mcp serve
         ```
 
         Verify with the `/mcp` command in Codex.
@@ -185,7 +185,8 @@ Choose your installation path:
         {
           "mcpServers": {
             "pointbreak": {
-              "command": "pointbreak"
+              "command": "pointbreak",
+              "args": ["mcp", "serve"]
             }
           }
         }

@@ -71,12 +71,13 @@ Ask Copilot to debug your code:
 Use the Claude Code CLI to add Pointbreak:
 
 ```bash
-claude mcp add --transport stdio pointbreak -- pointbreak
+claude mcp add --transport stdio pointbreak -- pointbreak mcp serve
 ```
 
 This command:
 - Registers Pointbreak as an MCP server in Claude Code
 - Uses the `pointbreak` binary from your PATH (installed in Step 1)
+- Runs `pointbreak mcp serve` to start the MCP server
 - Configures it to communicate via stdio transport
 
 **Step 3: Verify Installation**
@@ -106,7 +107,7 @@ Ask Claude to debug your code:
 - Verify installation: `pointbreak --version`
 - If using custom path, specify it explicitly:
   ```bash
-  claude mcp add --transport stdio pointbreak -- /full/path/to/pointbreak
+  claude mcp add --transport stdio pointbreak -- /full/path/to/pointbreak mcp serve
   ```
 
 ## Cursor (Built-in Agent)
@@ -154,7 +155,7 @@ Codex can use Pointbreak through MCP.
 Use the Codex CLI to add Pointbreak:
 
 ```bash
-codex mcp add pointbreak -- pointbreak
+codex mcp add pointbreak -- pointbreak mcp serve
 ```
 
 **Step 3: Verify Installation**
